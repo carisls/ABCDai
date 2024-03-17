@@ -1,5 +1,5 @@
 ###############################################################
-### Copyright©¸2024. Caris MPI, Inc. All rights reserved.###
+### Copyright©2024. Caris MPI, Inc. All rights reserved.###
 ###############################################################
 
 
