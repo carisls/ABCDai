@@ -1,5 +1,5 @@
 ###############################################################
-### Copyright©∏è2024. Caris MPI, Inc. All rights reserved.###
+### Copyright√Ç¬©2024. Caris MPI, Inc. All rights reserved.###
 ###############################################################
 
 import os
