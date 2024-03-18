@@ -2,11 +2,6 @@
 ### Copyright©2024. Caris MPI, Inc. All rights reserved.###
 ###############################################################
 
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[4]:
-
 
 import os
 import sys
@@ -35,6 +30,7 @@ config = yaml.full_load(open(configPath))
 
 hg38_fa = config['hg38_RefSeq_file']
 seq_dict = config['seq_dict']
+GATK = config['gatk']
 
 def run_command(cmd):
     try:
@@ -51,7 +47,7 @@ cmds = []
 vcfShards = []
 for i in range(1,13):
     vcfShard = outputVCF+f'.GenomeShard_{i}Of12.vcf'
-    cmd  = f"/gpfs1/home/santani/miniconda3/envs/lofreq/bin/lofreq call -f {hg38_fa} "
+    cmd  = f"lofreq call -f {hg38_fa} "
     cmd += f"-l data/GenomeShard_{i}Of12.bed --no-default-filter --no-baq --no-mq --sig 1 --call-indels "
     cmd += f"--bonf 1  -o {vcfShard} {inputBam}"
     cmds.append(cmd)
@@ -64,7 +60,7 @@ inputVcfs=''
 for vcf in vcfShards:
     inputVcfs += f' I={vcf}'
 
-cmd = f'/gpfs1/share/tools/envs/mutect2/bin/gatk MergeVcfs {inputVcfs} O={outputVCF} D={seq_dict}'
+cmd = f'{GATK} MergeVcfs {inputVcfs} O={outputVCF} D={seq_dict}'
 run_command(cmd)
 
 for vcf in vcfShards:

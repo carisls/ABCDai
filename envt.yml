@@ -268,6 +268,7 @@ dependencies:
   - llvm-openmp=16.0.6=h4dfa4b3_0
   - llvmlite=0.40.1=py311ha6695c7_0
   - locket=1.0.0=pyhd8ed1ab_0
+  - lofreq=2.1.5=py310h47ef89e_10
   - lxml=4.9.3=py311h1a07684_0
   - lz4=4.3.2=py311h9f220a4_0
   - lz4-c=1.9.4=hcb278e6_0

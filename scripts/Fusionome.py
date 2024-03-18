@@ -1,6 +1,7 @@
 ###############################################################
 ### Copyright©2024. Caris MPI, Inc. All rights reserved.###
 ###############################################################
+
 import os
 import sys
 import pysam
@@ -60,7 +61,7 @@ temp_bam = outputFolder+'/'+sample+'_DNAFusionome.bam'
 fusionomeOut = outputFolder+'/'+sample+'_DNAFusionome.csv'
 
 if not os.path.exists(fusionomeOut) or (overwrite):
-    cmd = f'{pythonCmd} scripts/DNA_Linkome.py --bam {sorted_bam}  --clipFastq {temp_fastq} --clipBam {temp_bam} -o {fusionomeOut} -r {reference}'
+    cmd = f'{pythonCmd} scripts/DNA_Linkome.py --bam {sorted_bam}  --clipFastq {temp_fastq} --clipBam {temp_bam} -o {fusionomeOut} -r {reference} -c {configPath}'
     run_command(cmd, 'DNAFusionome')
     
     

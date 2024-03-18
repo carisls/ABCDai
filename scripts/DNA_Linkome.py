@@ -2,13 +2,6 @@
 ### Copyright©2024. Caris MPI, Inc. All rights reserved.###
 ###############################################################
 
-
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[14]:
-
-
 import math
 import numpy as np
 import pandas as pd
@@ -31,12 +24,14 @@ def complement(dna):
 def rc(dna):
     return reverse(complement(dna))
 
+
 parser = argparse.ArgumentParser('Generate Linkome Telemetry.')
 parser.add_argument('-b', "--bam", type=pathlib.Path, help="Input Fastq filename and path", required=True)
 parser.add_argument("--clipFastq", type=pathlib.Path, help="Output Clip Fastq filename and path", required=True)
 parser.add_argument("--clipBam", type=pathlib.Path, help="Output Clip BAM filename and path", required=True)
 parser.add_argument('-o', "--output", type=pathlib.Path, help="Output Telemetry filename and path", required=True)
 parser.add_argument("-r", "--reference", type=pathlib.Path, help="Genome Fasta filename and path", required=True)
+parser.add_argument("-c", "--config", type=str, help="Configuration File", required=True)
 args = parser.parse_args()
 
 
@@ -45,6 +40,12 @@ FASTQ_FNAP   = args.clipFastq.as_posix()
 clipBAM_FNAP = args.clipBam.as_posix()
 output_FNAP  = args.output.as_posix()
 hg38path = args.reference.as_posix()
+
+configPath = args.config
+config = yaml.full_load(open(configPath,'rt'))
+cnvkitpath = config['cnvkitPath']
+sentiEnv = config['sentiEnv']
+sentiPath = config['sentiPath']
 
 minClipLength = 12
 
@@ -115,7 +116,7 @@ if len(set(fastq_unit_list)) > 0:
 
 
 
-    output = subprocess.check_output(f"source /gpfs1/share/tools/sentieon/bin/lic.txt; /gpfs1/share/tools/sentieon/bin/sentieon bwa mem -R '@RG\\tID:NTC\\tSM:NTC\\tPL:ILLUMINA' -t 24 -k 12 -C -M /gpfs1/share/hg38/hg38.fa {FASTQ_FNAP} | /gpfs1/share/tools/sentieon/bin/sentieon util sort -o {clipBAM_FNAP} -t 8 --sam2bam -i -", shell=True)
+    output = subprocess.check_output(f"{sentiEnv}; {sentiPath}/sentieon bwa mem -R '@RG\\tID:NTC\\tSM:NTC\\tPL:ILLUMINA' -t 24 -k 12 -C -M {hg38path} {FASTQ_FNAP} | {sentiEnv}/sentieon util sort -o {clipBAM_FNAP} -t 8 --sam2bam -i -", shell=True)
     print(output.decode('ascii'))
 
 
