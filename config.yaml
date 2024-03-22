@@ -3,21 +3,30 @@
 ###############################################################
 
 
-pythonCmd: 'PATH TO PYTHON INTERPRETER'
-sentiEnv : 'COMMAND TO EXPORT SENTIEON LICENSE SERVER IP AND PORT'
-sentiPath : 'PATH TO SENTIEON BIN DIRECTORY'
-threads: NUMBER_THREADS_FOR_SENTIEON
-hg38_RefSeq_file : 'PATH TO HG38 .FA FILE'
-gatk     : "PATH TO GATK DIRECTORY"
-snpeff   : "PATH TO SNPEFF DIRECTORY"
-# regions/targets
-targets_padded : 'PATH TO THE BAIT BED'
-cprvUniverse: 'PATH TO THE CPRV UNIVERSE CSV'
+pythonCmd: 'Path to the python interpreter.'
 
-cnvkitReference : 'PATH TO THE CNVKIT REFERENCE CNN'
-binMeta : 'PATH TO THE BIN PICKLE USED FOR MUTATIONOME AND COPYOME'
-cbr_bed : 'PATH TO THE CONTIGUOUS BAITED REGIONS BED'
-contamination_bed : 'PATH TO CONTAMINATED REGIONS BED'
-smartbinmeta : 'PATH TO THE SMARTBIN POSITION CSV'
-fragExclusionRegions : 'PATH TO EXCLUSION LIST OF REGIONS'
-Common_CH : 'PATH TO COMMON CHIP VARIANTS CSV'
+sentiEnv : 'The shell command to create enviornment variables required for sentieon ("export SENTIEON_LICENSE=IP:PORT").'
+sentiPath : 'Path to the sentieon directory. The script can be modified to use the Broads Mutect2.'
+cnvkitPath: 'Path to the main cnvkit cnvkit.py python script.'
+
+threads: 'Number of threads to use for TNHaplotyper2.'
+hg38_RefSeq_file : 'Path to the Hg38 FASTA file.'
+gatk     : "Path to the Broad Genome Analysis Toolkit (GATK)."
+snpeff   : "Path to the SnpEff toolbox."
+java     : "Path to the Java Virtual Machine (JVM) executable."
+
+# regions/targets
+targets_padded : 'Path to a .bed file which has the genomic intervals used for mutation calling.'
+seq_dict       : 'Path to the sequence dictionary for your reference sequence.'
+cprvUniverse: 'Path to a .csv file which contains the universe of all mutations seen in your dataset.'
+
+exon1_meta: 'Path to a .csv file that is an exon1 filtered MANE Select gff file with an additional pair of columns (region_exon1_start and region_exon1_end) which represent the baiting you have avaliable for that exon.'
+cnvkitReference : 'Path to a CNVkit Copy number reference profile .cnn file built with your normal samples.'
+
+cbr_bed : 'Path to a contiguous baited region .bed file which contains your baited regions of the genome.'
+contamination_bed : 'Path to a .bed file which has genomic regions that should be excluded from analysis.'
+smartbinmeta : 'Path to a .csv file which contains the size of bins used for the Fragment Pillar.'
+
+fragExclusionRegions : 'Path to a .csv file which contains the contiguous baited regions (in the same format as cbr_bed .bed) the which we want to exclude from the Fragment Pillar aggregation.'
+Common_CH : 'Path to a .csv file which contains common CHIP mutations.'
+binMeta : 'Path to a .pkl file which contains a dictionary of CHROMOSOME|GENE keys and bin values used for copy number genomic binning.'
