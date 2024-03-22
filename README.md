@@ -92,6 +92,7 @@ Path to a `.bed` file which has genomic regions that should be excluded from ana
 
 - **smartbinmeta** <br>
 Path to a `.csv` file which contains the size of bins used for the Fragment Pillar (example below):<br>
+
 | BinIndex | Chrom | StartPos | EndPos   |
 |----------|-------|----------|----------|
 | 1        | chr1  | 0        | 1313839  |
