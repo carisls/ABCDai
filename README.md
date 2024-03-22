@@ -105,6 +105,7 @@ Path to a `.csv` file which contains the size of bins used for the Fragment Pill
 Path to a `.csv` file which contains the contiguous baited regions (in the same format as cbr_bed `.bed`) the  which we want to exclude from the Fragment Pillar aggregation<br>
 - **Common_CH**<br>
 Path to a `.csv` file which contains common CHIP mutations (example below):<br>
+
 | CPRV               |
 |--------------------|
 | chr10|100425|TA|T  |
