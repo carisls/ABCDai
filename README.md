@@ -25,17 +25,17 @@ The `.py` files for each pillar can be found in the following location:
 # Config file meta data 
 The config file points to required meta data to process the code. This metadata is dependent on individual lab/sequencing considerations including WES vs. WGS, bait boosting strategy, variant universe, specific exlusions, etc. To faciliate running the code we elaborate on the required format for the files which the config path points towards: <br>
 - **pythonCmd** <br>
-Path to the python interpreter *('~/miniconda3/envs/ud_pipeline/bin/python')*.<br>
+Path to the python interpreter.<br>
 - **sentiEnv** <br>
 The shell command to create enviornment variables required for sentieon *('export SENTIEON_LICENSE=IP:PORT')* . The script can be modified to use the Broads Mutect2 (https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2)<br>
 - **sentiPath** <br>
 Path to the sentieon directory. The script can be modified to use the Broads Mutect2 (https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2)<br>
 - **cnvkitPath** <br>
-Path to the main cnvkit python script. *('~/miniconda3/envs/ud_pipeline/bin/cnvkit.py')*.<br>
+Path to the main cnvkit `cnvkit.py` python script.<br>
 - **threads** <br>
 Number of threads to use for `TNHaplotyper2`<br>
 - **hg38_RefSeq_file** <br>
-Path to the Hg38 FASTA file i.e.,(*http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz*)<br>
+Path to the Hg38 FASTA file(*i.e., downloaded from http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz*).<br>
 - **gatk** <br> 
 Path to the Broad Genome Analysis Toolkit (GATK)  *(https://gatk.broadinstitute.org/hc/en-us)*<br>
 - **snpeff** <br>
